@@ -1,10 +1,10 @@
 ## Installation
 
-```
+```bash
 $ npm install redux-contrib --save
 ```
 ## USAGE
-```
+```js
   import { createAction, createReducer } from 'redux-contrib';
 
   const createUserAction = createAction('CREATE_USER_ACTION', ['email', 'name']);
