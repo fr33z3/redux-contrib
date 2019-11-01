@@ -1,14 +1,17 @@
-const createAction = (type, paramNames) => {
+const createAction = (type, paramNames, customFields) => {
   const actionBuilder = (data) => {
-    const action = { type, payload: {} };
+    let action = { type, payload: {} };
 
     if (paramNames) {
       paramNames.forEach((paramName) => { action.payload[paramName] = data[paramName]; });
     }
 
+    if (customFields) { action = { ...action, ...customFields(data) }; };
+
     return action;
   };
   actionBuilder.toString = () => type;
+  actionBuilder.type = type;
 
   return actionBuilder;
 };
